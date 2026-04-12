@@ -1,0 +1,47 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+:root {
+  --bg: #f5f4f0;
+  --surface: #ffffff;
+  --border: #e2e0da;
+  --text: #1a1a1a;
+  --muted: #888;
+  --accent: #2563eb;
+  --accent-hover: #1d4ed8;
+  --danger: #dc2626;
+  --radius: 10px;
+}
+
+.card{
+    max-width: 350px;
+    width: 100%;
+}
+
+.tabs{
+    display: flex;
+}
+
+.tabs-btn{
+    flex: 1
+}
+.tabs-btn active{
+    color: white;
+    background: var(--accent);
+}
+
+.form{
+    display: none;
+}
+.form.active{
+    display: flex;
+}

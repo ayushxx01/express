@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notes</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+
+    <div class="card">
+        <div class="logo">Notes</div>
+        <p>thots, organised</p>
+
+        <div class="tabs">
+            <button class="tab-btn active" onclick="switchTab('login')">Login</button>
+            <button class="tab-btn" onclick="switchTab('register')">Register</button>
+        </div>
+
+        <!-- -----login form----- -->
+         <div id="login-form" class="form active">
+            <div>
+                <label>Email</label>
+                <input type="email" id="login-email" placeholder="you@gmail.com">
+            </div>
+
+            <div>
+                <label>Password</label>
+                <input type="password" id="login-password">
+            </div>
+
+            <div class="error" id="login-error">Invalid email or password</div>
+            <button class="btn" id="login-btn">Login</button>
+         </div>
+
+         <div id="register-form" class="form">
+            <div>
+                <label>Username</label>
+                <input type="text" id="register-username" placeholder="DrakenXX01">
+            </div>
+                        <div>
+                <label>Email</label>
+                <input type="email" id="login-email" placeholder="you@gmail.com">
+            </div>
+
+            <div>
+                <label>Password</label>
+                <input type="password" id="login-password">
+            </div>
+
+            <div class="error" id="register-error">User already exists</div>
+            <button id="register-btn" class="btn">Register</button>
+
+         </div>
+    </div>
+    
+</body>
+</html>

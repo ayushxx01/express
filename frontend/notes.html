@@ -1,11 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Notes — Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="notes.css"/>
 </head>
 <body>
-    <h1>Notes</h1>
+
+  <!-- Nav -->
+  <nav>
+    <div class="brand">notes<span>.</span></div>
+    <div class="nav-right">
+      <span class="user-name" id="user-name">Hi, Jane</span>
+      <button class="btn-sm" id="logout-btn">Logout</button>
+    </div>
+  </nav>
+
+  <!-- Main -->
+  <main>
+    <div class="top-bar">
+      <div>
+        <h1>My Notes</h1>
+        <p id="note-count">0 notes</p>
+      </div>
+      <button class="btn-sm primary" id="new-note-btn">+ New Note</button>
+    </div>
+
+    <!-- Create Note Form -->
+    <div class="note-form" id="note-form">
+      <input type="text" id="note-title" placeholder="Title" />
+      <textarea id="note-content" placeholder="Write something..."></textarea>
+      <div class="form-actions">
+        <button class="btn-sm" id="cancel-btn">Cancel</button>
+        <button class="btn-sm primary" id="save-note-btn">Save Note</button>
+      </div>
+    </div>
+
+    <!-- Notes Grid -->
+    <div class="notes-grid" id="notes-grid"></div>
+
+    <!-- Empty State -->
+    <div class="empty" id="empty-state">
+      <div class="icon">🗒️</div>
+      <p>No notes yet. Create your first one!</p>
+    </div>
+  </main>
+
+  <!-- Edit Modal -->
+  <div class="overlay" id="edit-overlay">
+    <div class="modal">
+      <h2>Edit Note</h2>
+      <input type="text" id="edit-title" placeholder="Title" />
+      <textarea id="edit-content" placeholder="Write something..."></textarea>
+      <div class="modal-actions">
+        <button class="btn-sm" id="modal-cancel-btn">Cancel</button>
+        <button class="btn-sm primary" id="save-edit-btn">Save Changes</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="notes.js"></script>
 </body>
 </html>

@@ -1,0 +1,358 @@
+/* ════════════════════════════════════════════════════════════════════════ */
+/* GLOBAL RESET & CSS VARIABLES */
+/* ════════════════════════════════════════════════════════════════════════ */
+
+/* Reset all elements - removes default margins, padding, and sets box-sizing */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* CSS Custom Properties (Variables) - Define color scheme and spacing */
+:root {
+  --bg: #f5f4f0;              /* Light background color */
+  --surface: #ffffff;          /* Card/surface background (white) */
+  --border: #e2e0da;          /* Border colors */
+  --text: #1a1a1a;            /* Main text color (dark) */
+  --muted: #888;              /* Muted/secondary text color */
+  --accent: #2563eb;          /* Primary accent color (blue) */
+  --accent-hover: #1d4ed8;    /* Darker blue for hover states */
+  --danger: #dc2626;          /* Red color for delete/danger actions */
+  --danger-bg: #fef2f2;       /* Light red background for danger zone */
+  --radius: 10px;             /* Standard border radius */
+}
+
+
+/* ════════════════════════════════════════════════════════════════════════ */
+/* BODY - Main page styling */
+/* ════════════════════════════════════════════════════════════════════════ */
+
+body {
+  font-family: 'DM Sans', sans-serif;  /* Sets the font to DM Sans */
+  background: var(--bg);               /* Light beige background */
+  min-height: 100vh;                   /* Takes up full viewport height */
+  color: var(--text);                  /* Default text color */
+}
+
+/* ════════════════════════════════════════════════════════════════════════ */
+/* NAVIGATION BAR */
+/* ════════════════════════════════════════════════════════════════════════ */
+
+nav {
+  background: var(--surface);          /* White background */
+  border-bottom: 1px solid var(--border);  /* Bottom border line */
+  padding: 0 24px;                     /* Horizontal padding */
+  height: 56px;                        /* Fixed height */
+  display: flex;                       /* Flexbox layout */
+  align-items: center;                 /* Center items vertically */
+  justify-content: space-between;      /* Space out brand and nav-right */
+  position: sticky;                    /* Stays at top when scrolling */
+  top: 0;
+  z-index: 10;                         /* Above other content */
+}
+
+.brand {
+  font-size: 18px;                     /* Logo/brand text size */
+  font-weight: 600;                    /* Semi-bold */
+  letter-spacing: -0.4px;              /* Tighter letter spacing */
+}
+
+.brand span {
+  color: var(--accent);                /* Logo accent word in blue */
+}
+
+.nav-right {
+  display: flex;                       /* Horizontal layout */
+  align-items: center;                 /* Center vertically */
+  gap: 12px;                           /* Space between items */
+}
+
+.user-name {
+  font-size: 14px;                     /* Smaller text */
+  color: var(--muted);                 /* Gray text */
+}
+
+
+/* ════════════════════════════════════════════════════════════════════════ */
+/* BUTTONS - Small button styling */
+/* ════════════════════════════════════════════════════════════════════════ */
+
+.btn-sm {
+  padding: 7px 14px;                   /* Vertical and horizontal padding */
+  font-family: inherit;                /* Use parent font */
+  font-size: 13px;                     /* Small text */
+  font-weight: 500;                    /* Medium weight */
+  border-radius: 8px;                  /* Rounded corners */
+  cursor: pointer;                     /* Hand cursor */
+  border: 1px solid var(--border);     /* Light gray border */
+  background: transparent;             /* No background initially */
+  color: var(--text);                  /* Dark text */
+  transition: all 0.15s;               /* Smooth animation for hover */
+}
+
+.btn-sm:hover {
+  background: var(--bg);               /* Light background on hover */
+}
+
+.btn-sm.primary {
+  background: var(--accent);           /* Blue background for primary buttons */
+  color: white;                        /* White text */
+  border-color: var(--accent);         /* Blue border */
+}
+
+.btn-sm.primary:hover {
+  background: var(--accent-hover);     /* Darker blue on hover */
+  border-color: var(--accent-hover);   /* Darker blue border */
+}
+
+
+/* ════════════════════════════════════════════════════════════════════════ */
+/* MAIN CONTENT AREA */
+/* ════════════════════════════════════════════════════════════════════════ */
+
+main {
+  max-width: 860px;                    /* Container max width */
+  margin: 0 auto;                      /* Center the main content */
+  padding: 32px 24px;                  /* Padding around content */
+}
+
+.top-bar {
+  display: flex;                       /* Horizontal layout */
+  align-items: center;                 /* Center items vertically */
+  justify-content: space-between;      /* Space title from buttons */
+  margin-bottom: 24px;                 /* Space before notes */
+}
+
+.top-bar h1 {
+  font-size: 20px;                     /* Page title size */
+  font-weight: 600;                    /* Semi-bold */
+}
+
+.top-bar p {
+  font-size: 13px;                     /* Subtitle text */
+  color: var(--muted);                 /* Gray text */
+  margin-top: 2px;                     /* Small spacing below h1 */
+}
+
+
+/* ════════════════════════════════════════════════════════════════════════ */
+/* NOTE FORM - Form to create/edit notes */
+/* ════════════════════════════════════════════════════════════════════════ */
+
+.note-form {
+  background: var(--surface);          /* White background */
+  border: 1px solid var(--border);     /* Light border */
+  border-radius: 12px;                 /* Rounded corners */
+  padding: 20px;                       /* Inner spacing */
+  margin-bottom: 28px;                 /* Space before notes grid */
+  display: none;                       /* Hidden by default */
+}
+
+.note-form.open {
+  display: block;                      /* Show when .open class added */
+}
+
+.note-form input,
+.note-form textarea {
+  width: 100%;                         /* Full width inputs */
+  border: 1px solid var(--border);     /* Light border */
+  border-radius: var(--radius);        /* Rounded corners */
+  font-family: inherit;                /* Use page font */
+  font-size: 14px;                     /* Standard text size */
+  padding: 10px 12px;                  /* Inner padding */
+  background: var(--bg);               /* Light background */
+  color: var(--text);                  /* Dark text */
+  outline: none;                       /* No default outline */
+  transition: border 0.15s;            /* Smooth border color animation */
+  resize: none;                        /* Don't allow resizing */
+}
+
+.note-form input {
+  margin-bottom: 10px;                 /* Space between inputs */
+  font-weight: 500;                    /* Slightly bold heading */
+}
+
+.note-form textarea {
+  height: 100px;                       /* Fixed height for note content */
+}
+
+.note-form input:focus,
+.note-form textarea:focus {
+  border-color: var(--accent);         /* Blue border when focused */
+  background: white;                   /* White background when focused */
+}
+
+.form-actions {
+  display: flex;                       /* Horizontal button layout */
+  justify-content: flex-end;           /* Buttons on the right */
+  gap: 8px;                            /* Space between buttons */
+  margin-top: 12px;                    /* Space above buttons */
+}
+
+
+/* ════════════════════════════════════════════════════════════════════════ */
+/* NOTES GRID - Grid layout for displaying note cards */
+/* ════════════════════════════════════════════════════════════════════════ */
+
+.notes-grid {
+  display: grid;                       /* CSS Grid layout */
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));  /* Responsive columns (240px min) */
+  gap: 14px;                           /* Space between grid items */
+}
+
+/* ── Note Cards ── */
+.note-card {
+  background: var(--surface);          /* White background */
+  border: 1px solid var(--border);     /* Light border */
+  border-radius: 12px;                 /* Rounded corners */
+  padding: 18px;                       /* Inner padding */
+  display: flex;                       /* Flexbox layout */
+  flex-direction: column;               /* Stack items vertically */
+  gap: 8px;                            /* Space between title, content, meta */
+  transition: box-shadow 0.15s;        /* Smooth shadow animation */
+}
+
+.note-card:hover {
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.07);  /* Subtle shadow on hover */
+}
+
+.note-card h3 {
+  font-size: 15px;                     /* Note title size */
+  font-weight: 600;                    /* Bold */
+  letter-spacing: -0.2px;              /* Tighter spacing */
+}
+
+.note-card p {
+  font-size: 13px;                     /* Note content text */
+  color: var(--muted);                 /* Gray text */
+  line-height: 1.55;                   /* More readable line height */
+  flex: 1;                             /* Takes remaining space */
+}
+
+.note-card .meta {
+  font-size: 12px;                     /* Tiny text for date/time */
+  color: #bbb;                         /* Very light gray */
+  margin-top: 4px;                     /* Space above metadata */
+}
+
+.note-card .card-actions {
+  display: flex;                       /* Horizontal button layout */
+  gap: 6px;                            /* Space between action buttons */
+  margin-top: 4px;                     /* Space above action buttons */
+}
+
+.card-btn {
+  padding: 5px 10px;                   /* Small button padding */
+  font-family: inherit;                /* Use page font */
+  font-size: 12px;                     /* Tiny text */
+  font-weight: 500;                    /* Medium weight */
+  border-radius: 6px;                  /* Rounded corners */
+  cursor: pointer;                     /* Hand cursor */
+  border: 1px solid var(--border);     /* Light border */
+  background: transparent;             /* No background */
+  color: var(--muted);                 /* Gray text */
+  transition: all 0.15s;               /* Smooth animation */
+}
+
+.card-btn:hover {
+  background: var(--bg);               /* Light background on hover */
+  color: var(--text);                  /* Darker text on hover */
+}
+
+.card-btn.delete:hover {
+  background: var(--danger-bg);        /* Light red background for delete */
+  color: var(--danger);                /* Red text for delete */
+  border-color: #fecaca;               /* Light red border */
+}
+
+
+/* ════════════════════════════════════════════════════════════════════════ */
+/* EMPTY STATE - Message shown when no notes exist */
+/* ════════════════════════════════════════════════════════════════════════ */
+
+.empty {
+  text-align: center;                  /* Center all text */
+  padding: 60px 20px;                  /* Large vertical padding */
+  color: var(--muted);                 /* Gray text */
+  display: none;                       /* Hidden by default */
+}
+
+.empty.visible {
+  display: block;                      /* Show when .visible class added */
+}
+
+.empty .icon {
+  font-size: 36px;                     /* Large emoji/icon */
+  margin-bottom: 12px;                 /* Space below icon */
+}
+
+.empty p {
+  font-size: 14px;                     /* Message text */
+}
+
+/* ════════════════════════════════════════════════════════════════════════ */
+/* EDIT MODAL - Overlay and modal dialog for editing notes */
+/* ════════════════════════════════════════════════════════════════════════ */
+
+.overlay {
+  position: fixed;                     /* Full screen overlay */
+  inset: 0;                            /* Covers entire viewport */
+  background: rgba(0, 0, 0, 0.3);     /* Semi-transparent dark backdrop */
+  display: none;                       /* Hidden by default */
+  align-items: center;                 /* Center modal vertically */
+  justify-content: center;             /* Center modal horizontally */
+  z-index: 100;                        /* Above all other content */
+}
+
+.overlay.open {
+  display: flex;                       /* Show when .open class added */
+}
+
+.modal {
+  background: var(--surface);          /* White background */
+  border-radius: 14px;                 /* Rounded corners */
+  padding: 28px;                       /* Inner padding */
+  width: 100%;                         /* Full width on mobile */
+  max-width: 440px;                    /* Max width on larger screens */
+  border: 1px solid var(--border);     /* Light border */
+}
+
+.modal h2 {
+  font-size: 17px;                     /* Modal title */
+  font-weight: 600;                    /* Semi-bold */
+  margin-bottom: 16px;                 /* Space below title */
+}
+
+.modal input,
+.modal textarea {
+  width: 100%;                         /* Full width */
+  border: 1px solid var(--border);     /* Light border */
+  border-radius: var(--radius);        /* Rounded corners */
+  font-family: inherit;                /* Use page font */
+  font-size: 14px;                     /* Standard text */
+  padding: 10px 12px;                  /* Inner padding */
+  background: var(--bg);               /* Light background */
+  color: var(--text);                  /* Dark text */
+  outline: none;                       /* No focus outline */
+  transition: border 0.15s;            /* Smooth border animation */
+  resize: none;                        /* Don't allow resizing */
+  margin-bottom: 10px;                 /* Space between inputs */
+}
+
+.modal textarea {
+  height: 120px;                       /* Taller textarea for modal */
+}
+
+.modal input:focus,
+.modal textarea:focus {
+  border-color: var(--accent);         /* Blue border when focused */
+  background: white;                   /* White background when focused */
+}
+
+.modal-actions {
+  display: flex;                       /* Horizontal button layout */
+  justify-content: flex-end;           /* Buttons on the right */
+  gap: 8px;                            /* Space between buttons */
+  margin-top: 4px;                     /* Small space above buttons */
+}
